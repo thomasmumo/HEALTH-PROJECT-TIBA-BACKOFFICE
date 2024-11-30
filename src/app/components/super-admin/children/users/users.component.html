@@ -1,0 +1,183 @@
+<div class="container">
+    <button class="add-user-btn" (click)="show_signup()">Add Hospital Admin</button>
+    <div class="search-container">
+        <form style="width: fit-content;">
+            <mat-form-field class="input">
+                <input type="text" matInput [matAutocomplete]="auto" [formControl]="searchControl" placeholder="Search hospital.."/>
+                <mat-autocomplete #auto="matAutocomplete">
+                    <mat-option *ngFor="let hospital of filteredHosptals |async" [value]="hospital.hospitalName">
+                        {{hospital.hospitalName}}
+                    </mat-option>
+                </mat-autocomplete>
+                <button (click)="filterHospitals()" type="button" class="searchBtn">search</button>
+            </mat-form-field>
+        </form>
+    </div>
+    <div class="admin-table">
+        <table>
+            <tbody>
+                <tr>
+                    <th>#</th>
+                    <th>Admin Name</th>
+                    <th>Hospital</th>
+                    <th>Admin Contact</th>
+                    <th>Action</th>
+                </tr>
+                <ng-container *ngFor="let hospital of hospitals;index as i">
+                    <tr *ngIf="searchedHospital==='' || hospital.hospitalName.toLocaleLowerCase().includes(searchedHospital.toLocaleLowerCase())">
+                        <td>
+                            {{i}}
+                        </td>
+                        <td>
+                            {{hospital.firstName}} {{hospital.lastName}}
+                        </td>
+                        <td>
+                            {{hospital.hospitalName}}
+                        </td>
+                        <td>
+                            {{hospital.phoneNumber}}
+                        </td>
+                        <td>
+                            <button class="delete-btn" (click)="showDeleteAlert(hospital.userId)">Delete</button>
+                        </td>
+                    </tr>
+                </ng-container>
+            </tbody>
+        </table>
+        <div class="delete-alert" *ngIf="showDelete">
+            <div style="width: fit-content;height: fit-content;text-align: center; color:white;">
+                <p>This action is irreversible. Do yo wish to continue?</p>
+                <button class="cancel-btn" (click)="showDeleteAlert()">Cancel</button>
+                <button class="continue-btn" (click)="DeleteAdmin()">Continue</button>
+            </div>
+        </div>
+    </div>
+    <div class="signup" *ngIf="showSignup">
+        <!-- <h1>&#10006;</h1> -->
+        <form [formGroup]="reactiveForm" (ngSubmit)="onSubmit()"  >
+            <div class="title">
+                <h3>Add admin details</h3>
+                <hr>
+            </div>
+            <div class="inputs-container" formGroupName="adminDetails">
+                <div>
+                    <div class="input-container">
+                        <input type="text" placeholder="" formControlName="firstname">
+                        <label >First Name*</label>
+                    </div>
+                    <div class="input-container">
+                        <input type="text" placeholder="" formControlName="email">
+                        <label >Email*</label>
+                    </div>
+                    <div class="input-container">
+                        <select formControlName="gender">
+                            <option value="Male">Male</option>
+                            <option value="Female">Female</option>
+                            <option value="Other">Other</option>
+                        </select>
+                        
+                    </div>
+                </div>
+                <div>
+                    <div class="input-container">
+                        <input type="text" placeholder="" formControlName="middlename">
+                        <label >Middle Name*</label>
+                    </div>
+                    <div class="input-container">
+                        <input type="text" maxlength="10" placeholder="" formControlName="phone">
+                        <label >Phone*</label>
+                    </div>
+                    <div class="input-container">
+                        <input type="text" placeholder="" formControlName="address">
+                        <label >Address*</label>
+                    </div>
+                </div>
+                <div>
+                    <div class="input-container">
+                        <input type="text" placeholder="" formControlName="lastname">
+                        <label >last Name*</label>
+                    </div>
+                    <div class="input-container">
+                        <input type="text" maxlength="8" formControlName="id" placeholder="">
+                        <label >National ID*</label>
+                    </div>
+                    <div class="input-container">
+                        <input type="date" formControlName="dob">
+                        <label >Date of birth*</label>
+                    </div>
+                </div>
+            </div>
+
+            <div class="title">
+                <h3>Add hopital details</h3>
+                <hr>
+            </div>
+            <div class="inputs-container" formGroupName="hospitalDetails">
+                <div>
+                    <div class="input-container">
+                        <input type="text" placeholder="" formControlName="hospitalname">
+                        <label >Hospital Name*</label>
+                    </div>
+                    <div class="input-container">
+                        <input type="text" maxlength="10" placeholder="" formControlName="hospitalcontact">
+                        <label >Hospital contact*</label>
+                    </div>
+                </div>
+                <div>
+                    <div class="input-container">
+                        <input type="text" placeholder="" formControlName="hospitaladdress">
+                        <label >Hospital Address*</label>
+                    </div>
+                </div>
+                <div>
+                    <div class="input-container">
+                        <input type="text" placeholder="" formControlName="hospitallocation">
+                        <label >Hospital Location*</label>
+                    </div>
+                </div>
+            </div>
+
+            <div class="title">
+                <h3>Set password</h3>
+                <hr style="height: .5px;">
+            </div>
+            <div class="inputs-container" formGroupName="passwordDetails">
+                <div>
+                    <div class="input-container">
+                        <input type="text" placeholder="" formControlName="password" #pass >
+                        <label >Password*</label>
+                    </div>
+                </div>
+                <div>
+                    <div class="input-container">
+                        <input type="text" placeholder="" formControlName="password2" #pass2 [ngClass]="{'invalid':pass.value!=pass2.value}">
+                        <label >Confirm password*</label>
+                    </div>
+                </div>
+                
+           
+            </div>
+            <div class="action-btns">
+                    <button class="cancel-btn" (click)="show_signup()" type="button">Close</button>
+                    <button class="submit-btn" type="submit"  >Create Admin</button>
+                </div>
+            
+                <div class="alert-container"  [ngClass]="{show:showInvalidFormAlert}">
+                    Please fill all the fields appropriately.
+                </div>
+            <div class="spinner" *ngIf="showSpinner">
+                <div style="width:fit-content;height: fit-content;color: white;text-align: center;">
+                    <div class="spinner-container"></div>
+                    <p>Creating admin....</p>
+                </div>
+                
+            </div>
+            <div class="success" [ngClass]="{'showSuccess':showSuccess}">
+                <p>Admin created successfully</p>
+            </div>
+
+        </form>
+
+        
+    </div>
+</div>

@@ -1,0 +1,123 @@
+.container{
+    width: 100%;
+    height: 100%;
+    display: grid;
+    place-items: center;
+    background-color:rgb(77,166,201);
+  
+   
+}
+.container .profile{
+    width: 70%;
+    height: 70%;
+    display: flex;
+    border-radius: 10px;
+    box-sizing: border-box;
+    padding: 50px;
+    background-color: lightgray;
+}
+.container .profile .profile-data{
+    width: 50%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+.container .BTNS{
+    width: 50%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    position: relative;
+}
+.container .BTNS .changePasswordForm{
+    position: absolute;
+    inset: 0;
+    background-color: rgb(0,0,0,.7);
+    box-sizing: border-box;
+    padding: 15px;
+    text-align: center;
+}
+.container .BTNS .changePasswordForm .input-container{
+    width: 100%;
+    height: 60px;
+    display: flex;
+    align-items: center;
+    background-color: white;
+    border: 1px solid rgb(77,166,201);
+    border-radius: 5px;
+    position: relative;
+    margin-bottom: 5%;
+}
+.container .BTNS .changePasswordForm .pass{
+    border: 1px solid red;
+    background-color: lightpink;
+}
+
+
+.container .BTNS .changePasswordForm .input-container i{
+    margin-right: 5%;
+}
+.container .BTNS .changePasswordForm .input-container input{
+    width: 100%;
+    height: 100%;
+    outline: none;
+    border: none;
+    z-index: 1;
+    background: transparent;
+    box-sizing: border-box;
+    padding-left: 20px;
+   
+}
+.container .BTNS .changePasswordForm .input-container input:focus+label,
+.container .BTNS .changePasswordForm .input-container input:not(:placeholder-shown)+label{
+    top: 0;
+    color: rgb(77,166,201);
+}
+.container .BTNS .changePasswordForm .input-container label{
+    position: absolute;
+    left: 20px;
+    color: grey;
+}
+.container .BTNS .changePasswordForm .btn{
+    width: 100px;
+    height: 40px;
+    margin: 2%;
+    border-radius: 5px;
+    border: none;
+}
+.container .BTNS .changePasswordForm .btn:hover{
+    border: 1px solid black;
+    cursor: pointer;
+}
+.container .BTNS .changePasswordForm button{
+    background-color: orange;
+    color: white;
+}
+.container .BTNS .changePasswordForm input[type=submit]{
+    background-color: rgb(77,166,201);
+    color: white;
+}
+.container .BTNS button{
+    height: 50px;
+    margin-bottom: 5%;
+    cursor: pointer;
+    border: 1px solid black;
+    transition: all .5s ease-in-out;
+}
+.container .BTNS button:hover{
+    border-radius: 5px;
+}
+.edit{
+    background-color: lightgreen;
+
+}
+.change{
+    background-color: lightblue;
+}
+.delete{
+    background-color: orange;
+}
+
+

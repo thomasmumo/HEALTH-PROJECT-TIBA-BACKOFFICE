@@ -1,0 +1,43 @@
+<div class="container">
+    <div class="side-menu">
+        <div class="logo">
+            <div class="image"></div>
+            <h1>TiBA</h1>
+        </div>
+
+        <div class="nav-btns">
+            <button (click)="changeComponent('dashboard')" [ngClass]="{btnFocus:dashboard}"><i class="fa fa-dashboard"></i>  Dashboard  </button>
+            <!-- <button (click)="changeComponent('hospitals')" [ngClass]="{btnFocus:hospitals}"><i class="fa fa-hospital-o"></i>  Hospitals  </button> -->
+            <button (click)="changeComponent('users')" [ngClass]="{btnFocus:users}"><i class="fa fa-users" aria-hidden="true">  Users  </i></button>
+            <button (click)="changeComponent('statistics')" [ngClass]="{btnFocus:statistics}"><i class="fa fa-line-chart"></i>  Statistics  </button>
+            <button (click)="changeComponent('settings')" [ngClass]="{btnFocus:settings}"><i class="fa fa-cog" aria-hidden="true">  Settings  </i> </button>
+            <button (click)="logout()"><i class="fa fa-sign-out"></i>  Logout  </button>
+        </div>
+
+
+    </div>
+    <div class="main-content">
+        <div class="header">
+            <div class="title">
+                <h1>SUPER ADMIN</h1>
+            </div>
+            <div class="profile">
+                <p>
+                    {{adminDetails.firstName}} {{adminDetails.lastName}}
+                </p>
+                <div class="picture">
+                    <!-- <input type="file" style="opacity: 2;"> -->
+                </div>
+            </div>
+        </div>
+
+        <div class="body">
+            <app-home *ngIf="dashboard"/>
+            <app-statistics *ngIf="statistics"/>
+            <app-settings *ngIf="settings"/>
+            <app-users *ngIf="users"/>
+            <app-hospitals *ngIf="hospitals"/>
+            
+        </div>
+    </div>
+</div>

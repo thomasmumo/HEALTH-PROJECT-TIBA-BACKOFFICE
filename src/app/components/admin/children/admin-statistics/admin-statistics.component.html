@@ -1,0 +1,60 @@
+<div class="container">
+    <div id="dc2">
+        <h3 style="text-align: center;color: rgb(77,166,201);font-size: 25px;">TERMINAL ILLNESS STATISTICS</h3>
+        <div class="bar-chart" id="chart-container">
+            <canvas id="MyChart" ></canvas>
+        </div>
+        <div class="filter">
+            <select >
+                <option value="OneDay">1 Day</option>
+                <option value="1 week">1 Week</option>
+                <option value="4 weeks">4 Weeks</option>
+                <option value="4 Months">4 Months</option>
+            </select>
+            <label>Filter</label>
+        </div>
+        <table>
+            <tbody>
+                <tr>
+                    <th>Hospital Name</th>
+                        <th>HIV</th>
+                        <th>CANCER</th>
+                        <th>TB</th>
+                        <th>COVID19</th>
+                        <th>DIABETES</th>
+                        <th>DEMNTIA</th>
+                        <th>LUNG DESEASE</th>
+                </tr>
+                <tr>
+                    <td>
+                        {{dataSet.label}}
+                    </td>
+                    <td>
+                        {{dataSet.data[0]}}
+                    </td>
+                    <td>
+                        {{dataSet.data[1]}}
+                    </td>
+                    <td>
+                        {{dataSet.data[2]}}
+                    </td>
+                    <td>
+                        {{dataSet.data[3]}}
+                    </td>
+                    <td>
+                        {{dataSet.data[4]}}
+                    </td>
+                    <td>
+                        {{dataSet.data[5]}}
+                    </td>
+                    <td>
+                        {{dataSet.data[6]}}
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    
+    <button class="report-btn" (click)="downloadPdf()">Download report</button>
+    
+</div>

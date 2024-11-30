@@ -1,0 +1,49 @@
+<div class="container">
+    <div class="profile">
+        <div class="profile-data">
+            <h4><b>Name:</b>  {{AdminDetails.firstName}} {{AdminDetails.lastName}}</h4>
+            <h4><b>Role:</b>  {{AdminDetails.roles}}</h4>
+            <h4><b>Email:</b> {{AdminDetails.email}}</h4>
+            <h4><b>Phone:</b>  {{AdminDetails.phoneNumber}}</h4>
+            <h4><b>Gender:</b> {{AdminDetails.gender}}</h4>
+        </div>
+        
+        <div class="BTNS">
+            <button class="edit">Edit</button>
+            <button class="change" (click)="showContainer()">Change Password</button>
+            <button class="delete">Delete account</button>
+            <div class="changePasswordForm" *ngIf="showChangePassword">
+                <form [formGroup]="reactiveForm" (ngSubmit)="onSubmit()">
+                        <small style="color: red;" *ngIf="showAlert">please fill All the fields</small>
+                        <small style="color: red;" *ngIf="showMatchAlert">Password does not match</small>
+                        <div class="input-container" [ngClass]="{'pass':showCurrentAlert}">
+                            <input type="password" id="cpass" placeholder="" formControlName="currentPassword">
+                            
+                            <label>Current Password</label>
+                            <i class="fa fa-eye-slash" (click)="showPassword('cpass')" *ngIf="!cpass_showeye"></i>
+                            <i class="fa fa-eye" (click)="showPassword('cpass')" *ngIf="cpass_showeye"></i>
+                        </div>
+                        <div class="input-container" [ngClass]="{'pass':showMatchAlert}">
+                            <input type="password" id="npass" placeholder="" formControlName="newPassword">
+                            
+                            <label>New Password</label>
+                            <i class="fa fa-eye-slash" (click)="showPassword('npass')" *ngIf="!npass_showeye"></i>
+                            <i class="fa fa-eye" (click)="showPassword('npass')" *ngIf="npass_showeye"></i>
+                        </div>
+                        <div class="input-container"[ngClass]="{'pass':showMatchAlert}">
+                            <input type="password" id="pass" placeholder="" formControlName="confirmPassword">
+                            
+                            <label>Confirm Password</label>
+                            <i class="fa fa-eye-slash" (click)="showPassword('pass')" *ngIf="!pass_showeye"></i>
+                            <i class="fa fa-eye" (click)="showPassword('pass')" *ngIf="pass_showeye"></i>
+                        </div>
+                        
+                        <button class="btn" (click)="showContainer()">Close</button>
+                        <input type="submit" value="Submit" class="btn">
+               
+                </form>
+            </div>
+        </div>
+    </div>
+    
+</div>

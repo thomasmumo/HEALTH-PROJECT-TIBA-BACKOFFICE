@@ -1,0 +1,185 @@
+.container{
+    width: 100%;
+    height: 100%;
+    position: relative;
+}
+.container .search{
+    height: 20%;
+    
+}
+.container .search form{
+    width: 40%;
+    height: 100%;
+    margin: auto;
+    display: flex;
+    align-items: last baseline;
+}
+.container .search form mat-form-field {
+    margin: 0;
+    width: 100%;
+    height:70px;
+}
+.container .search form mat-form-field .submit-btn{
+    z-index: 100;
+    cursor: pointer;
+    position: absolute;
+    width: 34%;
+    height: 100%;
+    border: none;
+    margin: 0;
+    top: 0;
+    background-color: rgb(77,166,201);
+    color: white;
+    font-size: 18px;
+}
+.container .search form mat-form-field input[type=text]{
+    width: 70%;
+
+}
+.container .table{
+    overflow: scroll;
+    overflow-x:hidden;
+    height: 80%;
+}
+.container .table table{
+    background-color: rgb(241, 240, 240);
+    border-collapse: collapse;
+    width: 100%;
+}
+.container .table table tr{
+    height: 50px;
+    border-bottom: 1px solid rgb(132, 209, 240);
+}
+
+.container .table table tr td{
+    box-sizing: border-box;
+    padding-left: 15px;
+
+}
+.container .table table th{
+    background-color: rgb(77,166,201);
+    color: white;
+    font-size: 20px;
+    font-family: sans-serif;
+    text-align: left;
+    box-sizing: border-box;
+    padding-left: 15px;
+    position: sticky;
+    top: 0;
+}
+.edit{
+    background-color: rgb(77,166,201);
+    width: 70px;
+    height: 30px;
+    border: none;
+    color: white;
+    cursor: pointer;
+}
+.Delete{
+    background-color: orange;
+    width: 70px;
+    height: 30px;
+    border: none;
+    color: white;
+    margin-left: 1%;
+    cursor: pointer;
+}
+.container .update-table{
+    position: absolute;
+    inset: 0;
+    background-color: rgb(0,0,0,.7);
+}
+.container .update-table h1{
+    float: right;
+    margin: 2%;
+    color: red;
+    cursor: pointer;
+}
+.container .update-table form{
+    box-sizing: border-box;
+    padding: 10px;
+    margin: 10% auto;
+    width: 40%;
+}
+.container .update-table form .input-container{
+    width: 100%;
+    display: flex;
+    align-items: center;
+    height: 60px;
+    border-radius: 5px 5px 0px 0px ;
+    position: relative;
+    background-color: lightgray;
+    margin-bottom: 5%;
+}
+.container .update-table form .input-container input{
+    width: 100%;
+    height: 100%;
+    border-radius: 5px 5px 0px 0px;
+    outline: none;
+    border: none;
+    box-sizing: border-box;
+    padding-left: 15px;
+    background: transparent;
+    font-size: 15px;
+}
+.container .update-table form .input-container input:focus{
+    border-bottom: 2px solid rgb(77,166,201);
+}
+.container .update-table form .input-container input:focus+label,
+.container .update-table form .input-container input:not(:placeholder-shown)+label{
+    top:0;
+    color: rgb(77,166,201);
+}
+.container .update-table form .input-container label{
+    position: absolute;
+    left: 15px;
+    margin: 0;
+    color: grey;
+}
+.container .update-table form button{
+    width: 100%;
+    border: none;
+    background-color: rgb(77,166,201);
+    color: white;
+    font-size: 15px;
+    height: 50px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+.container .delete-hospital{
+    position: absolute;
+    inset: 0;
+    background-color: rgb(0,0,0,.7);
+    display: grid;
+    place-items: center;
+}
+.container .delete-hospital h1{
+    right: 10px;
+    top: 10px;
+    margin: 2%;
+    color: red;
+    position: absolute;
+    cursor: pointer;
+}
+.delete-container{
+    width: 50%;
+    height: 250px;
+    background-color: white;
+    border-radius: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+.delete-container button{
+    width: 100px;
+    height: 40px;
+    border-radius: 5px;
+    color: white;
+    border: none;
+    cursor: pointer;
+    margin: 1%;
+}
+.delete-container button:hover{
+    border: 1px solid black;
+}

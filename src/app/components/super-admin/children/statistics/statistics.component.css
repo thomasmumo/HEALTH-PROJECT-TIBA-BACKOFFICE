@@ -1,0 +1,67 @@
+.report-btn{
+    height: 40px;
+    width: 250px;
+    background-color: lightgreen;
+    border: none;
+    margin-top: 3%;
+    border-radius: 5px;
+    cursor: pointer;
+    box-shadow: 0px 0px 10px 1px rgb(173, 173, 173);
+    border: .5px solid grey;
+    transition: all .5s ease-in-out;
+}
+.report-btn:hover{
+    background-color: green;
+    color: white;
+}
+.container{
+    height: 100%;
+    width: 100%;
+    overflow: scroll;
+    overflow-x: hidden;
+}
+.container .data-container table{
+    width: 100%;
+    border-collapse: collapse;
+    font-family: sans-serif;
+    
+    
+}
+.container .data-container table tr{
+    height: 30px;
+    border-bottom: 1px solid rgb(77,166,201);
+}
+.container .data-container table tr th{
+    background-color: rgb(77,166,201);
+    text-align: left;
+    padding-left: 20px;
+    box-sizing: border-box;
+    
+}
+.container .data-container table tr td{
+    text-align: left;
+    padding-left: 20px;
+    box-sizing: border-box;
+}
+.container .data-container .filter{
+    height: 70px;
+    width: 100%;
+    display: flex;
+    align-items: flex-end;
+}
+.container .data-container .filter select{
+    height: 40px;
+    width: 40%;
+    box-sizing: border-box;
+    padding-left: 30px;
+    padding-right: 20px;
+    background-color: rgb(77,166,201);
+    outline: none;
+}
+.container .data-container .filter label{
+    height: 40px;
+    font-size: 18px;
+    padding-top: 10px;
+    box-sizing: border-box;
+    
+}

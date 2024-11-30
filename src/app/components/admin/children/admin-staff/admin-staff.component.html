@@ -1,0 +1,171 @@
+<div class="container">
+    <button class="add-staff" (click)="showForm()">Add staff</button>
+    <div class="search">
+        <form>
+            <mat-form-field class="input">
+                <input type="text" matInput [matAutocomplete]="auto" [formControl]="searchControl" placeholder="Search staff.."/>
+                <mat-autocomplete #auto="matAutocomplete">
+                    <mat-option *ngFor="let staff of filteredStaff |async" [value]="staff.firstName">
+                        {{staff.firstName}}
+                    </mat-option>
+                </mat-autocomplete>
+                <button (click)="filterHospitals()" type="button" class="searchBtn">search</button>
+            </mat-form-field>
+        </form>
+
+        <label>Filter:</label>
+
+        <select [(ngModel)]="filterOption">
+            <option value="All">All</option>
+            <option value="Doctor">Doctors</option>
+            <option value="Nurse">Nurses</option>
+            <option value="LabTech">Lab Techs</option>
+        </select>
+    </div>
+    <div class="staff-table-container">
+        <table>
+            <tbody>
+                <tr>
+                    <th>#</th>
+                    <th>Name</th>
+                    <th>Job</th>
+                    <th>Role</th>
+                </tr>
+                <ng-container *ngFor="let staff of staff;index as i">
+                    <ng-container *ngIf="filterOption === 'All' || staff.roles.toLocaleLowerCase().includes(filterOption.toLocaleLowerCase())">
+                        <ng-container *ngIf="searchedStaff === '' || staff.firstName.toLocaleLowerCase().includes(searchedStaff.toLocaleLowerCase())">
+                            <tr>
+                                <td>
+                                    {{i+1}}
+                                </td>
+                                <td>
+                                    {{staff.firstName}}
+                                </td>
+                                <td>
+                                    {{staff.roles}}
+                                </td>
+                                <td>
+                                    
+                                    <button class="delete" (click)="deleteStaff(staff.idNumber)">Delete</button>
+                                </td>
+                            </tr>
+                        </ng-container>
+                        
+                    </ng-container>
+                    
+                </ng-container>
+            </tbody>
+        </table>
+        <div class="del-container" *ngIf="showDeleteAlert">
+            <div style="width: fit-content;height: fit-content;text-align: center;color: white;">
+                <p>This action is ireeversible. Do you wish to continue?</p>
+                <button class="cancel-btn" (click)="deleteStaff()">Cancel</button>
+                <button class="continue-btn" (click)="_deletStaff()">COntinue</button>
+            </div>
+        </div>
+    </div>
+    <div class="add-staff-container" *ngIf="showAddStaff">
+        <h1 (click)="showForm()">&#10006;</h1>
+        <form [formGroup]="reactiveForm" (ngSubmit)="onAddUserSubmit()">
+            <div class="staff-details-container" formGroupName="staffDetails">
+                <div>
+                    <div class="input-container">
+                        <input type="text" placeholder="" formControlName="firstname">
+                        <label>First name</label>
+                    </div>
+                    <div class="input-container">
+                        <input type="text" placeholder="" formControlName="email">
+                        <label>Email</label>
+                    </div>
+                    <div class="input-container">
+                        <input type="date" placeholder="" formControlName="dob">
+                        <label>Date of birth</label>
+                    </div>
+                    <div class="input-container">
+                        <input type="text" placeholder="" formControlName="address">
+                        <label>Address</label>
+                    </div>
+                </div>
+                <div>
+                    <div class="input-container">
+                        <input type="text" placeholder="" formControlName="middlename">
+                        <label>Middle name</label>
+                    </div>
+                    <div class="input-container">
+                        <input type="text" maxlength="8" placeholder="" formControlName="id">
+                        <label>National ID</label>
+                    </div>
+                    <div class="input-container">
+                        <select formControlName="role">
+                            <option value="DOCTOR">DOCTOR</option>
+                            <option value="TRIAGE_NURSE">TRIAGE_NURSE</option>
+                            <option value="LAB_TECHNICIAN">LAB_TECHNICIAN</option>
+                            <option value="RECEPTIONIST">RECEPTIONIST</option>
+                            <option value="IMAGING_TECHNICIAN">IMAGING_TECHNICIAN</option>
+                        </select>
+                        
+                    </div>
+                    <div class="input-container">
+                        <input type="text" placeholder="" formControlName="nationality">
+                        <label>Nationality</label>
+                    </div>
+                </div>
+                <div>
+                    <div class="input-container">
+                        <input type="text" placeholder="" formControlName="lastname">
+                        <label>Last name</label>
+                    </div>
+                    
+                    <div class="input-container">
+                        <select formControlName="gender">
+                            <option value="Male">Male</option>
+                            <option value="Female">Female</option>
+                            <option value="Other">Other</option>
+                        </select>
+                        
+                    </div>
+                    <div class="input-container">
+                        <input type="text" maxlength="10" placeholder="" formControlName="phone">
+                        <label>Contact</label>
+                    </div>
+                </div>
+            </div>
+            <div class="title">
+                <p>Set password</p>
+                <hr>
+            </div>
+            <div class="staff-details-container" formGroupName="passwordDetails">
+                <div>
+                    <div class="input-container">
+                        <input type="text"  placeholder="" formControlName="password" #pass [ngClass]="{'invalidPassword':pass.value!=pass2.value}">
+                        <label>Password</label>
+                    </div>
+                </div>
+                <div>
+                    <div class="input-container">
+                        <input type="text" placeholder="" formControlName="password2"  #pass2 [ngClass]="{'invalidPassword':pass.value!=pass2.value}">
+                        <label>Confirm password</label>
+                    </div>
+                </div>
+            </div>
+            <div class="btns">
+                <button class="cancel" (click)="showForm()">Cancel</button>
+                <button class="submit">Add staff</button>
+            </div>
+            
+        </form>
+        <div class="invalid-form-alert" [ngClass]="{showAlert:showInvalidFormAlert}">
+            <p>Please fill in all the fields appropriately</p>
+        </div>
+        <div class="loader-container" *ngIf="showSpinner">
+            <div style="width: fit-content;height: fit-content;text-align: center;color: white;">
+                <div class="spinner-container"></div>
+                Creating user...
+            </div>
+            
+        </div>
+        <div class="user-added-success" [ngClass]="{successAlert:showSuccessAlert}">
+            <p>Staff added successfully</p>
+        </div>
+    </div>
+</div>

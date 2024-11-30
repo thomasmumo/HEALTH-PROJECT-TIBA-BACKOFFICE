@@ -1,0 +1,114 @@
+.container{
+    height: 100vh;
+    width: 100%;
+    display: flex;
+}
+.container .side-menu{
+    width: 20%;
+    background-color: rgb(132, 209, 240);
+    height: 100%;
+    box-sizing: border-box;
+    padding: 20px 0;
+}
+.container .side-menu .logo{
+    display: flex;
+    align-items: center;
+    height: 10%;
+    box-sizing: border-box;
+    padding: 0 20px;
+}
+.container .side-menu .logo h1{
+    margin: 0 10px;
+    color: white;
+    font-weight: 900;
+    font-size: 30px;
+    letter-spacing: 2px;
+    -webkit-text-stroke: 1px rgb(77,166,201);
+    font-family: sans-serif;
+}
+.container .side-menu .logo .image{
+    width: 60px;
+    height: 60px;
+    border-radius: 50px;
+    background-color: white;
+    background-image: url(/assets/logo.png);
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+.container .side-menu .nav-btns{
+    display: flex;
+    flex-direction: column;
+    box-sizing: border-box;
+    padding: 15% 0;
+}
+.container .side-menu .nav-btns button{
+    font-family: sans-serif;
+    height: 80px;
+    background: transparent;
+    border: none;
+    text-align: left;
+    box-sizing: border-box;
+    padding-left: 20%;
+    font-size: 23px;
+    color: rgb(0,0,0,.7);
+    transition: all .5s ease-in-out;
+    cursor: pointer;
+}
+.container .side-menu .nav-btns .btnFocus{
+    background-color: rgb(77,166,201);
+    color: white;
+}
+.container .side-menu .nav-btns button:hover{
+    background-color: rgb(77,166,201);
+    color: white;
+    padding-left: 22%;
+}
+.container .main-content{
+    width: 80%;
+    height: 100%;
+}
+.container .main-content .header{
+    height: 10%;
+    width: 100%;
+    background-color: rgb(132, 209, 240);
+    display: flex;
+    align-items: center;
+}
+.container .main-content .header .title{
+    height: fit-content;
+    width: 70%;
+}
+.container .main-content .header .title h1{
+    font-family: sans-serif;
+    font-weight: 900;
+    text-align: center;
+    color: white;
+    font-size: 40px;
+}
+.container .main-content .header .profile{
+    height: fit-content;
+    width: 30%;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    box-sizing: border-box;
+    padding-right: 20px;
+}
+.container .main-content .header .profile .picture{
+    width: 50px;
+    height: 50px;
+    border-radius: 25px;
+    background-color: black;
+}
+.container .main-content .header .profile p{
+    margin: 0;
+    margin-right: 10px;
+}
+.container .main-content .body{
+    height: 90%;
+    width: 100%;
+    box-sizing: border-box;
+    padding: 10px;
+}
+

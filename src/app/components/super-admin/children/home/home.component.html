@@ -1,0 +1,104 @@
+<div class="container">
+    <div class="cards">
+        <div class="card">
+           <h1>
+            +{{totalHospitals+1}}
+           </h1>
+            <p>Users</p>
+        </div>
+        <div class="card">
+            <h1>
+                +{{totalHospitals}}
+            </h1>
+            <p>Hospitals</p>
+        </div>
+        
+    </div> 
+    <div class="search">
+        <form>
+            <mat-form-field class="input">
+                <input type="text" matInput [matAutocomplete]="auto" [formControl]="searchControl" placeholder="Search hospital.."/>
+                <mat-autocomplete #auto="matAutocomplete">
+                    <mat-option *ngFor="let hospital of filteredHosptals |async" [value]="hospital.hospitalName">
+                        {{hospital.hospitalName}}
+                    </mat-option>
+                </mat-autocomplete>
+                <button (click)="filterHospitals()" type="button" class="searchBtn">search</button>
+            </mat-form-field>
+        </form>
+    </div>
+    <div class="hospital-table">
+        <table>
+            <tbody>
+                <tr class="head">
+                    <th>#</th>
+                    <th>Hospital Name</th>
+                    <th>Admin</th>
+                    <th>Admin Contact</th>
+                    <th>Hospital Contact</th>
+                    <th>Location</th>
+                    <th>Action</th>
+                </tr>
+                <ng-container  *ngFor="let hospital of hospitals;index as i">
+                    <tr *ngIf="searchedHospital===''||hospital.hospitalName.toLocaleLowerCase().includes(searchedHospital.toLocaleLowerCase())">
+                        <td>
+                            {{i}}
+                        </td>
+                        <td>
+                            {{hospital.hospitalName}}
+                        </td>
+                        <td>
+                            {{hospital.firstName}} {{hospital.lastName}}
+                        </td>
+                        <td>
+                            {{hospital.phoneNumber}}
+                        </td>
+                        <td>
+                            {{hospital.hospitalContactNumber}}
+                        </td>
+                        <td>
+                            {{hospital.hospitalLocation}}
+                        </td>
+                        <td>
+                  
+                            <button class="Delete" (click)="deleteHospital1(hospital.userId)">Delete</button>
+                        </td>
+                    </tr>
+                </ng-container>
+                
+            </tbody>
+        </table>
+        
+    </div>
+    <div class="over-lay" *ngIf="showUpdateForm">
+        <h1 (click)="showUpdateForm=!showUpdateForm">&#10006;</h1>
+        <form>
+            <div class="input-container">
+                <input type="text" placeholder="" [formControl]="hospitalName">
+                <label>Hospital Name</label>
+            </div>
+            <div class="input-container">
+                <input type="text" placeholder="" [formControl]="hospitalAdmin">
+                <label>Hospital Admin</label>
+            </div>
+            <div class="input-container">
+                <input type="text" placeholder="" [formControl]="hospitalLocation">
+                <label>Hospital location</label>
+            </div>
+            <div class="input-container">
+                <input type="text" placeholder="" [formControl]="hospitalContact">
+                <label>Hospital Contact</label>
+            </div>
+            <button type="button">Update</button>
+            
+        </form>
+    </div>
+    <div class="delete-alert" *ngIf="showHospitalAlert">
+        <div style="width: fit-content; height: fit-content;text-align: center;">
+            <p>This action is irreversible. Do you wish to continue?</p>
+            <button class="no" (click)="deleteHospital('cancel')">Cancel</button>
+            <button class="yes" (click)="deleteHospital('continue')">Continue</button>
+        </div>
+        
+    </div>
+</div>

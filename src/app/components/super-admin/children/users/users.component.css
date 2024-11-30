@@ -1,0 +1,292 @@
+.container{
+    width: 100%;
+    height: 100%;
+    position: relative;
+}
+.container .add-user-btn{
+   width: 100%;
+   height: 60px;
+   border: none;
+   background-color:rgb(77,166,201);
+   color: white;
+   font-family: sans-serif;
+   font-size: 18px;
+   cursor: pointer;
+   border-radius: 5px;
+}
+.container .add-user-btn:hover{
+    border: 1px solid black;
+}
+.container .signup{
+    position: absolute;
+    inset: 0;
+    /* background-color: rgb(132, 209, 240,.7); */
+    background-color: rgb(0, 0, 0,.7);
+    box-sizing: border-box;
+    padding: 20px;
+}
+
+.container .signup form{
+    width:100%;
+    height: 100%;
+    background-color:white;
+    border-radius: 5px;
+    box-sizing: border-box;
+    padding: 10px;
+    position: relative;
+    overflow: hidden;
+}
+.container .signup form .title{
+    height: 3.3%;
+    position: relative;
+    display: flex;
+    align-items: center;
+    
+}
+.container .signup form .title hr{
+    width: 88%;
+    height: .5px;
+    border: 1px solid rgb(77,166,201);
+    
+    
+}
+.container .signup form .title h3{
+width: 12%;
+margin: 0;
+padding: 0;
+color: rgb(77,166,201);
+
+}
+.container .signup form .inputs-container{
+    height: 30%;
+    display: flex;
+    justify-content: start;
+    box-sizing: border-box;
+    padding: 10px;
+}
+.container .signup form .inputs-container div{
+    width: 32%;
+    height: 100%;
+    margin-right: 2%;
+}
+
+.container .signup form .inputs-container .input-container{
+    width: 100%;
+    height: 50px;
+    background-color: lightgray;
+    margin-bottom: 2%;
+    position: relative;
+    display: flex;
+    align-items: center;
+    border-radius: 5px 5px 0px 0px;
+    position: relative;
+}
+.container .signup form .inputs-container .input-container input,select{
+    border-radius: 5px 5px 0px 0px;
+    outline: none;
+    border: none;
+    background: transparent;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+    box-sizing: border-box;
+    padding-left: 20px;
+}
+.container .signup form .inputs-container .input-container label{
+    position: absolute;
+    left: 20px;
+    color: grey;
+}
+.container .signup form .inputs-container .input-container input:focus{
+    border-bottom: 2px solid rgb(77,166,201);
+}
+.container .signup form .inputs-container .input-container input.ng-touched.ng-invalid, .container .signup form .inputs-container .input-container input.invalid{
+    border-bottom: 2px solid red;
+}
+.container .signup form .inputs-container .input-container input.ng-touched.ng-invalid+label{
+    color: red;
+}
+.container .signup form .inputs-container .input-container input:focus+label,
+.container .signup form .inputs-container .input-container input:not(:placeholder-shown)+label{
+    top: 0;
+    color: rgb(77,166,201);
+}
+.container .signup form .action-btns{
+    position: absolute;
+    bottom: 20px;
+    left: 10px;
+}
+.container .signup form .action-btns .cancel-btn{
+    width: 120px;
+    height: 40px;
+    border: none;
+    background-color: orange;
+    color: white;
+    cursor: pointer;
+}
+
+.container .signup form .action-btns .submit-btn{
+    height: 40px;
+    width: 1000px;
+    margin-left: 30px;
+    border: none;
+    background-color: rgb(77,166,201);
+    color: white;
+    cursor: pointer;
+}
+.container .signup form .action-btns .submit-btn:hover,.container .signup form .action-btns .cancel-btn:hover{
+    border: 1px solid black;
+
+}
+.container .signup form .alert-container{
+    position: absolute;
+    top: 20px;
+    right: -30%;
+    visibility: hidden;
+    width: 30%;
+    height: 10%;
+    background-color: orange;
+    color: white;
+    border-radius: 5px 0px 0px 5px;
+    box-shadow: 0px 0px 10px 3px rgb(0, 0, 0,.5);
+    display: grid;
+    place-items: center;
+    transition: all 1s ease-in-out;
+}
+.container .signup form .show{
+    visibility: visible;
+    right: 0;
+}
+
+.container .signup form .spinner{
+    position: absolute;
+    inset: 0;
+    background-color: rgb(0, 0, 0,.7);
+    display: grid;
+    place-items: center;
+}
+.container .signup form .spinner .spinner-container{
+    width: 60px;
+    height: 60px;
+    border-radius: 30px;
+    background-image: url(/assets/logo.png);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    animation: spin 5s linear infinite;
+    background-color: white;
+}
+@keyframes spin{
+    from{transform: rotate(0deg);}
+    to{transform: rotate(360deg);}
+}
+.container .signup form .success{
+    position: absolute;
+    top: -100px;
+    width: 100%;
+    background-color: lightgreen;
+    display: grid;
+    place-items: center;
+    box-shadow: 0px 0px 10px 5px black;
+    color: white;
+    height: 50px;
+    z-index: 5;
+    transition: all 1s ease-in-out;
+
+}
+.container .signup form .showSuccess{
+    top: 50px;
+}
+.container .search-container{
+    height: 10%;
+    box-sizing: border-box;
+    padding: 10px 0px;
+    display: grid;
+    place-items: center;
+}
+.container .search-container form .searchBtn{
+    position: absolute;
+    right: -15px;
+    top: 0;
+    height: 100%;
+    width: 37%;
+    background-color: rgb(77,166,201);
+    color: white;
+    font-size: 18px;
+    border: none;
+    cursor: pointer;
+}
+.container .search-container form .input{
+    width: 40vw;
+}
+.container .admin-table{
+    width: 100%;
+    height: 75%;
+    margin-top: 2%;
+    overflow: scroll;
+    overflow-x: hidden;
+    position: relative;
+}
+.container .admin-table .delete-alert{
+    position: absolute;
+    top: 20%;
+    left: 20%;
+    width: 50%;
+    height: 40%;
+    border-radius: 10px;
+    background-color: rgb(77,166,201);
+    box-shadow: 0px 4px 6px black;
+    display: grid;
+    place-items: center;
+}
+.container .admin-table .delete-alert button{
+    height: 50px;
+    width: 100px;
+    border-radius: 10px;
+    border: none;
+    margin: 2%;
+}
+.container .admin-table .delete-alert button:hover{
+    border: 1px solid black;
+    cursor: pointer;
+}
+.container .admin-table .delete-alert .cancel-btn{
+    background-color: lightgreen;
+    color: white;
+}
+.container .admin-table .delete-alert .continue-btn{
+    background-color:orange;
+    color: white;
+}
+
+.container .admin-table table{
+    width: 100%;
+    border-collapse: collapse;
+    font-family: sans-serif;
+}
+.container .admin-table table tr{
+    height: 50px;
+    border-bottom: 1px solid rgb(77,166,201);
+}
+.container .admin-table table tr th{
+    box-sizing: border-box;
+    padding-left: 20px;
+    text-align: left;
+    background-color: rgb(77,166,201);
+    color: white;
+    position: sticky;
+    top: 0;
+
+}
+.container .admin-table table tr td{
+    text-align: left;
+    box-sizing: border-box;
+    padding-left: 20px;
+}
+.container .admin-table table tr td .delete-btn{
+    background-color: orange;
+    color: white;
+    border: none;
+    width: 70px;
+    height: 40px;
+}

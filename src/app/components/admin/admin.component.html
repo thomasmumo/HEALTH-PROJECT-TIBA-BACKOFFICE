@@ -1,0 +1,37 @@
+<div class="container">
+    <div class="side-menu">
+        <div class="logo-container">
+            <div class="logo"></div>
+            <h1>TiBA</h1>
+        </div>
+        <div class="nav-container">
+            <button (click)="changeComponent('dashboard')" [ngClass]="{'active':dashboard}"><i class="fa fa-dashboard" ></i>  Dashboard</button>
+            <button (click)="changeComponent('staff')" [ngClass]="{'active':staff}"><i class="fa fa-users" aria-hidden="true" ></i>Staff</button>
+            <button (click)="changeComponent('statistics')" [ngClass]="{'active':statistics}"><i class="fa fa-line-chart"></i>  Statistics</button>
+            <button (click)="changeComponent('settings')" [ngClass]="{'active':settings}"><i class="fa fa-cog" aria-hidden="true"> </i>  Settings</button>
+            <button (click)="logout()"><i class="fa fa-sign-out"></i>  Logout</button>
+        </div>
+    </div>
+    <div class="body">
+        <div class="header">
+            <div class="hospital-name">
+                <h1>
+                    {{hospitalName}}
+                </h1>
+            </div>
+            <div class="user-profile">
+                <p>
+                    {{authenticatedUser}}
+                </p>
+                <div class="user-photo"></div>
+            </div>
+        </div>
+        <div class="children-outlet">
+            <app-admin-home *ngIf="dashboard"></app-admin-home>
+            <app-admin-settings *ngIf="settings"></app-admin-settings>
+            <app-admin-staff *ngIf="staff"></app-admin-staff>
+            <app-admin-statistics *ngIf="statistics"></app-admin-statistics>
+        </div>
+        
+    </div>
+</div>
